@@ -7,6 +7,7 @@ import (
 
 	"github.com/fabiotavarespr/golang-crud-rest-api/internal/config"
 	"github.com/fabiotavarespr/golang-crud-rest-api/internal/database"
+	"github.com/fabiotavarespr/golang-crud-rest-api/internal/logger"
 	"github.com/fabiotavarespr/golang-crud-rest-api/internal/routes"
 	"github.com/gorilla/mux"
 )
@@ -23,6 +24,6 @@ func main() {
 	// Register Routes
 	routes.RegisterProductRoutes(router)
 	// Start the server
-	log.Println(fmt.Sprintf("Starting Server on port %s", config.AppConfig.Port))
+	logger.Info(fmt.Sprintf("Starting Server on port %s", config.AppConfig.Port))
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", config.AppConfig.Port), router))
 }

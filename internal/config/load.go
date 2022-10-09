@@ -3,6 +3,7 @@ package config
 import (
 	"log"
 
+	"github.com/fabiotavarespr/golang-crud-rest-api/internal/logger"
 	"github.com/spf13/viper"
 )
 
@@ -14,7 +15,7 @@ type Config struct {
 var AppConfig *Config
 
 func LoadAppConfig() {
-	log.Println("Loading Server Configurations...")
+	logger.Info("Loading Server Configurations...")
 	viper.AddConfigPath(".")
 	viper.SetConfigName("config")
 	viper.SetConfigType("json")
