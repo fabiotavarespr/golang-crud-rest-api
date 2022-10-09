@@ -1,0 +1,17 @@
+#
+# This docker-compose file starts and runs:
+# * A mysql database
+
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7.39
+    platform: linux/x86_64
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=crud_demo
+      - MYSQL_USER=crud_demo
+      - MYSQL_PASSWORD=golang
+      - MYSQL_ROOT_PASSWORD=crud_golang
