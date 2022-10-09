@@ -1,9 +1,10 @@
 package database
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/fabiotavarespr/golang-crud-rest-api/internal/entities"
+	"github.com/fabiotavarespr/golang-crud-rest-api/internal/logger"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -14,12 +15,12 @@ var err error
 func Connect(connectionString string) {
 	Instance, err = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if err != nil {
-		log.Fatal(err)
+		logger.Error(fmt.Sprintf("Cannot connect to DB - %s", err))
 		panic("Cannot connect to DB")
 	}
-	log.Println("Connected to Database...")
+	logger.Info("Connected to Database...")
 }
 func Migrate() {
 	Instance.AutoMigrate(&entities.Product{})
-	log.Println("Database Migration Completed...")
+	logger.Info("Database Migration Completed...")
 }
